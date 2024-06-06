@@ -1,13 +1,14 @@
 const httpStatus = require('http-status');
+const bcrypt = require('bcryptjs');
 const tokenService = require('./token.service');
 const userService = require('./user.service');
 const Token = require('../models/token.model');
 const ApiError = require('../utils/ApiError');
 const { tokenTypes } = require('../config/tokens');
-const bcrypt = require('bcryptjs');
 const emailTemplate = require('../utils/emailtemplates');
-const {sendEmail} = require('../services/email.service');
-const {UserOTP, User} = require('../models')
+const { sendEmail } = require('./email.service');
+const { UserOTP, User } = require('../models');
+const logger = require('../config/logger');
 /**
  * Login with username and password
  * @param {string} email
@@ -84,11 +85,11 @@ const verifyEmail = async (req, res) => {
   const { _id: userId } = req.user;
 
   if (!userId) {
-    return res.status(httpStatus.BAD_REQUEST).json({ msg: "User ID is missing" });
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: 'User ID is missing' });
   }
 
   if (!Otp) {
-    return res.status(httpStatus.BAD_REQUEST).json({ msg: "OTP is missing" });
+    return res.status(httpStatus.BAD_REQUEST).json({ msg: 'OTP is missing' });
   }
 
   try {
@@ -102,7 +103,7 @@ const verifyEmail = async (req, res) => {
     const validOTP = await bcrypt.compare(Otp, hashedOTP);
 
     if (!validOTP) {
-      return res.status(httpStatus.BAD_REQUEST).json({ msg: "OTP is incorrect" });
+      return res.status(httpStatus.BAD_REQUEST).json({ msg: 'OTP is incorrect' });
     }
 
     const payload = { isEmailVerified: true };
@@ -116,16 +117,15 @@ const verifyEmail = async (req, res) => {
 
     return res.status(httpStatus.OK).json({
       status: 'VERIFIED',
-      msg: "Email successfully verified"
+      msg: 'Email successfully verified',
     });
-
   } catch (error) {
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
       status: 'FAILED',
-      error: error.message
+      error: error.message,
     });
   }
-}
+};
 
 module.exports = {
   loginUserWithEmailAndPassword,

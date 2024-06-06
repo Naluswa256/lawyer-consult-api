@@ -6,24 +6,10 @@ const allRoles = {
     'manageLawyers',
     'getAppointments',
     'manageAppointments',
-    'manageCategories'
+    'manageCategories',
   ],
-  lawyer: [
-    'viewProfile',
-    'updateProfile',
-    'viewAppointments',
-    'manageAppointments',
-    'viewReviews',
-    'manageAvailability'
-  ],
-  customer: [
-    'viewLawyers',
-    'bookAppointment',
-    'viewAppointments',
-    'cancelAppointment',
-    'leaveReview',
-    'updateProfile'
-  ]
+  lawyer: ['viewProfile', 'updateProfile', 'viewAppointments', 'manageAppointments', 'viewReviews', 'manageAvailability'],
+  customer: ['viewLawyers', 'bookAppointment', 'viewAppointments', 'cancelAppointment', 'leaveReview', 'updateProfile'],
 };
 
 const roles = Object.keys(allRoles);

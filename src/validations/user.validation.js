@@ -64,7 +64,7 @@ const updateUser = Joi.object({
   socialMediaLinkedAccounts: Joi.array().items(
     Joi.object({
       platform: Joi.string().required(),
-      url: Joi.string().re(),
+      url: Joi.string().required(),
     })
   ).optional(),
 });

@@ -37,9 +37,8 @@ const resetPassword = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
-
 const verifyEmail = catchAsync(async (req, res) => {
-  await authService.verifyEmail(req,res);
+  await authService.verifyEmail(req, res);
 });
 
 module.exports = {

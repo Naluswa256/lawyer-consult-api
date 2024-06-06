@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 // Specialization Schema
 const specializationSchema = new Schema({
@@ -13,7 +14,6 @@ const specializationSchema = new Schema({
     required: false,
   },
 });
-
 
 const Specialization = mongoose.model('Specialization', specializationSchema);
 
