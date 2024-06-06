@@ -18,12 +18,16 @@ const userSchema = mongoose.Schema(
         }
       },
     },
-    fullNames:String, 
+    fullNames:{
+      type:String, 
+    }, 
     phoneNumber:{
       type:String, 
       trim:true
     }, 
-    location:String, 
+    location:{
+      type:String
+    }, 
     avatar:{
       type:String, 
     },
@@ -56,7 +60,9 @@ const userSchema = mongoose.Schema(
       type:Boolean, 
       default:false
     }, 
-    rating:Number, 
+    rating:{
+      type:Number
+    }, 
     appointments:[
       {
         type:mongoose.Schema.Types.ObjectId, 
