@@ -6,7 +6,9 @@ const allRoles = {
     'manageLawyers',
     'getAppointments',
     'manageAppointments',
-    'manageCategories'
+    'manageCategories',
+    'manageSpecializations',
+    'getSpecializations'
   ],
   lawyer: [
     'viewProfile',
@@ -14,7 +16,8 @@ const allRoles = {
     'viewAppointments',
     'manageAppointments',
     'viewReviews',
-    'manageAvailability'
+    'manageAvailability',
+    'getSpecializations'
   ],
   customer: [
     'viewLawyers',
