@@ -51,25 +51,15 @@ const getUserByEmail = async (email) => {
   return User.findOne({ email });
 };
 
-/**
- * Update user by id
- * @param {ObjectId} userId
- * @param {Object} updateBody
- * @returns {Promise<User>}
- */
-const updateUserById = async (userId, updateBody) => {
-  const user = await getUserById(userId);
-  if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
-  }
-  if (updateBody.email && (await User.isEmailTaken(updateBody.email, userId))) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
-  }
-  Object.assign(user, updateBody);
-  await user.save();
-  return user;
-};
+const updateUser = async (req, res) => {
+  const userId = req.user._id; 
+  const updateBody = req.body;
 
+  // Only update fields that are present in the request body
+  const user = await userService.updateUserById(userId, updateBody);
+
+  res.send({ user });
+};
 /**
  * Delete user by id
  * @param {ObjectId} userId
@@ -89,6 +79,6 @@ module.exports = {
   queryUsers,
   getUserById,
   getUserByEmail,
-  updateUserById,
+  updateUser,
   deleteUserById,
 };
