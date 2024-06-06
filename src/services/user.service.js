@@ -51,14 +51,23 @@ const getUserByEmail = async (email) => {
   return User.findOne({ email });
 };
 
-const updateUser = async (req, res) => {
-  const userId = req.user._id; 
-  const updateBody = req.body;
+/**
+ * @param {ObjectId} userId
+ * @param {Object} updateBody
+ * @returns {Promise<User>}
+ */
+const updateUser= async (userId, updateBody) => {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
 
-  // Only update fields that are present in the request body
-  const user = await userService.updateUserById(userId, updateBody);
+  Object.keys(updateBody).forEach((key) => {
+    user[key] = updateBody[key];
+  });
 
-  res.send({ user });
+  await user.save();
+  return user;
 };
 /**
  * Delete user by id

@@ -18,22 +18,22 @@ const userSchema = mongoose.Schema(
         }
       },
     },
-    fullNames:{
-      type:String, 
-      default:''
-    }, 
-    phoneNumber:{
-      type:String, 
-      trim:true,
-      default:''
-    }, 
-    location:{
-      type:String,
-      default:''
-    }, 
-    avatar:{
-      type:String, 
-      default:''
+    fullNames: {
+      type: String,
+      default: '',
+    },
+    phoneNumber: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    location: {
+      type: String,
+      default: '',
+    },
+    avatar: {
+      type: String,
+      default: '',
     },
     password: {
       type: String,
@@ -56,125 +56,123 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    isProfilePublic:{
-      type:Boolean, 
-      default:false
+    isProfilePublic: {
+      type: Boolean,
+      default: false,
     },
-    isVerified:{
-      type:Boolean, 
-      default:false
-    }, 
-    rating:{
-      type:Number,
-      default:0
-    }, 
-    appointments:[
-      {
-        type:mongoose.Schema.Types.ObjectId, 
-        ref:'Appointment'
-      }
-    ], 
-    availableForWork:{
-      type:Boolean, 
-      default:false
+    isVerified: {
+      type: Boolean,
+      default: false,
     },
-    specializations:[
+    rating: {
+      type: Number,
+      default: 0,
+    },
+    appointments: [
       {
-        type:mongoose.Schema.Types.ObjectId, 
-        ref:'Specialization', 
-      }
-    ], 
-    availableSlots:[
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Appointment',
+      },
+    ],
+    availableForWork: {
+      type: Boolean,
+      default: false,
+    },
+    specializations: [
       {
-        day:String,
-        timeSlots:[
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Specialization',
+      },
+    ],
+    availableSlots: [
+      {
+        day: String,
+        timeSlots: [
           {
-            type:String
-          }
-        ]
-      }
-    ], 
-
-    employmentHistory:[
-      {
-        companyName:{
-          type:String, 
-          required:true
-        }, 
-        jobTitle:{
-          type:String, 
-          required:true
-        }, 
-        description:String,
-        startMonth:{
-          type:String, 
-          required:true
-        }, 
-        startYear:{
-          type:Number, 
-          required:true 
-        }, 
-        endMonth:String, 
-        endYear:Number, 
-        isCurrent:{
-          type:Boolean, 
-          default:false
-        }
-      }
+            type: String,
+          },
+        ],
+      },
     ],
 
-    education:[
+    employmentHistory: [
       {
-        institutionName:{
-          type:String, 
-          required:true
-        }, 
-        degree:{
-          type:String, 
-          required:true
-        }, 
-        fieldOfStudy:String, 
-        startYear:{
-          type:Number, 
-          required:true 
-        }, 
-        endYear:{
-          type:Number, 
-        }, 
-        currentlyAttending:{
-          type:Boolean, 
-          default:false
-        }
-        
-      }
+        companyName: {
+          type: String,
+          required: true,
+        },
+        jobTitle: {
+          type: String,
+          required: true,
+        },
+        description: String,
+        startMonth: {
+          type: String,
+          required: true,
+        },
+        startYear: {
+          type: Number,
+          required: true,
+        },
+        endMonth: String,
+        endYear: Number,
+        isCurrent: {
+          type: Boolean,
+          default: false,
+        },
+      },
     ],
 
-    socialMediaLinkedAccounts:[
+    education: [
       {
-        platform:String, 
-        url:String
-      }
-    ], 
-    
-    Bookings:[
+        institutionName: {
+          type: String,
+          required: true,
+        },
+        degree: {
+          type: String,
+          required: true,
+        },
+        fieldOfStudy: String,
+        startYear: {
+          type: Number,
+          required: true,
+        },
+        endYear: {
+          type: Number,
+        },
+        currentlyAttending: {
+          type: Boolean,
+          default: false,
+        },
+      },
+    ],
+
+    socialMediaLinkedAccounts: [
       {
-        type:mongoose.Schema.Types.ObjectId, 
-        ref:'Appointment'
-      }
-    ], 
-    givenReviews:[
+        platform: String,
+        url: String,
+      },
+    ],
+
+    Bookings: [
       {
-        type:mongoose.Schema.Types.ObjectId, 
-        ref:'Review'
-      }
-    ], 
-    receivedReviews:[
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Appointment',
+      },
+    ],
+    givenReviews: [
       {
-        type:mongoose.Schema.Types.ObjectId, 
-        ref:'Review'
-      }
-    ]
-  
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review',
+      },
+    ],
+    receivedReviews: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review',
+      },
+    ],
   },
   {
     timestamps: true,
@@ -220,6 +218,3 @@ userSchema.pre('save', async function (next) {
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-
-
-

@@ -1,6 +1,6 @@
 // <!--!  OTP -->
 exports.otpEmail = (otp) => {
-    return `<html>
+  return `<html>
     <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -32,12 +32,12 @@ exports.otpEmail = (otp) => {
             </tbody>
             </table>
             </body>
-            </html>`
-  }
-  
-  // < !--!  Sign In Success-- >
-  exports.signupSuccess = () => {
-    return `<html lang="en">
+            </html>`;
+};
+
+// < !--!  Sign In Success-- >
+exports.signupSuccess = () => {
+  return `<html lang="en">
     <head>
     <meta charset="UTF-8">
     <title>Successful Sign Up</title>
@@ -57,13 +57,11 @@ exports.otpEmail = (otp) => {
     </div>
     </div>
     </body>
-    </html>`
-  }
-  
-  {/* <!--!  Appointment Success-- > */ }
-  exports.appointmentSuccess = (clientName, lawyerName, date, time, type) => {
-  
-    return ` <html>
+    </html>`;
+};
+
+exports.appointmentSuccess = (clientName, lawyerName, date, time, type) => {
+  return ` <html>
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -163,14 +161,14 @@ exports.otpEmail = (otp) => {
               </div>
               </div>        
           </body>
-          </html>`
-  }
-  
-  // <!--!  Appointment Rejected -->
-  exports.appointmentRejected = (usermail) => {
-    let email = usermail
-    let User = usermail.split("@")[0]
-    return `
+          </html>`;
+};
+
+// <!--!  Appointment Rejected -->
+exports.appointmentRejected = (usermail) => {
+  const email = usermail;
+  // const User = usermail.split('@')[0];
+  return `
         <html>
           <head>
             <meta charset="utf-8">
@@ -245,7 +243,7 @@ exports.otpEmail = (otp) => {
           <body>
             <div class="container">
               <h1>Appointment Rejection</h1>
-              <p>Dear ${User},</p>
+              <p>Dear ${email},</p>
               <p>We regret to inform you that your appointment with our lawyer has been rejected. We apologize for any inconvenience this may have caused.</p>
               <p>If you have any questions or concerns, please feel free to <a href="mailto:ace.legal.services.official@gmail.com">ace.legal.services.official@gmail.com</a>.</p>
               <p>Thank you for your understanding.</p>
@@ -255,11 +253,11 @@ exports.otpEmail = (otp) => {
               <p class="signature">Best regards,<br>The Ace Legal Service Team</p>
             </div>
           </body>
-        </html>`
-  }
-  // <!--!  Reset Password-- >
-  exports.resetPassword = (userName, link) => {
-    return `  <html lang="en">
+        </html>`;
+};
+// <!--!  Reset Password-- >
+exports.resetPassword = (userName, link) => {
+  return `  <html lang="en">
       <head>
         <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -279,7 +277,5 @@ exports.otpEmail = (otp) => {
               </div>
             </body>
           </html>
-  `
-  }
-  
- 
+  `;
+};

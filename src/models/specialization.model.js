@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 // Specialization Schema
 const specializationSchema = new Schema({
@@ -18,7 +19,6 @@ specializationSchema.statics.isNameTaken = async function (name, excludeSpeciali
   const specialization = await this.findOne({ name, _id: { $ne: excludeSpecializationId } });
   return !!specialization;
 };
-
 
 const Specialization = mongoose.model('Specialization', specializationSchema);
 
