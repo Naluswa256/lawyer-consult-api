@@ -20,16 +20,20 @@ const userSchema = mongoose.Schema(
     },
     fullNames:{
       type:String, 
+      default:''
     }, 
     phoneNumber:{
       type:String, 
-      trim:true
+      trim:true,
+      default:''
     }, 
     location:{
-      type:String
+      type:String,
+      default:''
     }, 
     avatar:{
       type:String, 
+      default:''
     },
     password: {
       type: String,
@@ -61,7 +65,8 @@ const userSchema = mongoose.Schema(
       default:false
     }, 
     rating:{
-      type:Number
+      type:Number,
+      default:0
     }, 
     appointments:[
       {
