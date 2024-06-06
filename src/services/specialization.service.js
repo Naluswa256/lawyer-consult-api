@@ -1,6 +1,3 @@
-// services/specialization.service.js
-
-const httpStatus = require('http-status');
 const { Specialization } = require('../models');
 
 /**

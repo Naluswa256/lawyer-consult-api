@@ -16,9 +16,7 @@ router
   .get(auth('getUsers'), validate(userValidation.getUser), userController.getUser)
   .delete(auth('manageUsers'), validate(userValidation.deleteUser), userController.deleteUser);
 
-  router
-  .route('/update-profile')
-  .patch(auth(), validate(userValidation.updateUser), userController.updateUser);
+router.route('/update-profile').patch(auth(), validate(userValidation.updateUser), userController.updateUser);
 
 module.exports = router;
 

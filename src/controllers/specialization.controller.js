@@ -1,7 +1,7 @@
 // controllers/specialization.controller.js
 
 const httpStatus = require('http-status');
-const { specializationService } = require('../services');
+const specializationService = require('../services/specialization.service');
 
 const createSpecialization = async (req, res) => {
   const specialization = await specializationService.createSpecialization(req.body);
