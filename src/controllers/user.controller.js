@@ -33,6 +33,10 @@ const deleteUser = catchAsync(async (req, res) => {
   await userService.deleteUserById(req.params.userId);
   res.status(httpStatus.NO_CONTENT).send();
 });
+const saveFcmToken = catchAsync(async (req, res) => {
+  const user = await userService.saveFcmToken(req.user._id, req.body.fcmToken);
+  res.send(user);
+});
 
 module.exports = {
   createUser,
@@ -40,4 +44,5 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
+  saveFcmToken,
 };

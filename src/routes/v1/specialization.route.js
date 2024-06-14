@@ -15,6 +15,8 @@ router
     validate(specializationValidation.createSpecialization),
     specializationController.createSpecialization
   )
-  .get(auth('getSpecializations'), specializationController.getSpecializations);
+  .get(auth(), specializationController.getSpecializations);
+
+router.get('/search', auth(), specializationController.searchSpecializations);
 
 module.exports = router;

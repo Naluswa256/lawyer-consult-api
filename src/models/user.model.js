@@ -18,6 +18,7 @@ const userSchema = mongoose.Schema(
         }
       },
     },
+    fcmToken: {},
     fullNames: {
       type: String,
       default: '',
@@ -56,6 +57,10 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    isPhoneNumberVerified: {
+      type: Boolean,
+      default: false,
+    },
     isProfilePublic: {
       type: Boolean,
       default: false,
@@ -77,6 +82,10 @@ const userSchema = mongoose.Schema(
     availableForWork: {
       type: Boolean,
       default: false,
+    },
+    yearsOfExperience: {
+      type: Number,
+      default: 0,
     },
     specializations: [
       {

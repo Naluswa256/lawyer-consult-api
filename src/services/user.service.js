@@ -67,6 +67,33 @@ const updateUser = async (userId, updateBody) => {
   await user.save();
   return user;
 };
+const verifyPhoneNumber = async (userId, phoneNumber) => {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
+
+  const existingUser = await User.findOne({ phoneNumber });
+  if (existingUser) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Phone number already taken');
+  }
+
+  user.phoneNumber = phoneNumber;
+  user.isPhoneNumberVerified = true;
+  await user.save();
+  return user;
+};
+
+const saveFcmToken = async (userId, fcmToken) => {
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
+  }
+
+  user.fcmToken = fcmToken;
+  await user.save();
+  return user;
+};
 /**
  * Delete user by id
  * @param {ObjectId} userId
@@ -88,4 +115,6 @@ module.exports = {
   getUserByEmail,
   updateUser,
   deleteUserById,
+  saveFcmToken,
+  verifyPhoneNumber,
 };

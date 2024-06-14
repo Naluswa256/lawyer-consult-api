@@ -4,7 +4,10 @@ const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const fileUploadRoute = require('./upload.route');
 const specializationRoutue = require('./specialization.route');
+const lawyersRoute = require('./lawyer.route');
 const config = require('../../config/config');
+const servicesRoute = require('./package.route');
+const paymentRoute = require('./payment.route');
 
 const router = express.Router();
 
@@ -24,6 +27,18 @@ const defaultRoutes = [
   {
     path: '/lawyer-specializations',
     route: specializationRoutue,
+  },
+  {
+    path: '/lawyers',
+    route: lawyersRoute,
+  },
+  {
+    path: '/services',
+    route: servicesRoute,
+  },
+  {
+    path: '/payment',
+    route: paymentRoute,
   },
 ];
 

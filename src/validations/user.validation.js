@@ -10,6 +10,11 @@ const createUser = {
   }),
 };
 
+const saveFcmToken = {
+  body: Joi.object().keys({
+    fcmToken: Joi.string().required(),
+  }),
+};
 const getUsers = {
   query: Joi.object().keys({
     name: Joi.string(),
@@ -26,9 +31,14 @@ const getUser = {
   }),
 };
 
+const verifyPhoneNumber = {
+  body: Joi.object().keys({
+    msisdn: Joi.string().required(),
+  }),
+};
+
 const updateUser = Joi.object({
   fullNames: Joi.string().optional(),
-  phoneNumber: Joi.string().optional(),
   location: Joi.string().optional(),
   isProfilePublic: Joi.boolean().optional(),
   availableForWork: Joi.boolean().optional(),
@@ -89,4 +99,6 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
+  saveFcmToken,
+  verifyPhoneNumber,
 };

@@ -6,6 +6,8 @@ const compression = require('compression');
 const cors = require('cors');
 const passport = require('passport');
 const httpStatus = require('http-status');
+const http = require('http');
+const socketIo = require('socket.io');
 const config = require('./config/config');
 const morgan = require('./config/morgan');
 const { jwtStrategy } = require('./config/passport');
@@ -15,7 +17,8 @@ const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./utils/ApiError');
 
 const app = express();
-
+const server = http.createServer(app);
+const io = socketIo(server);
 if (config.env !== 'test') {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
@@ -41,6 +44,10 @@ app.use(compression());
 app.use(cors());
 app.options('*', cors());
 
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
 // jwt authentication
 app.use(passport.initialize());
 passport.use('jwt', jwtStrategy);
@@ -64,4 +71,7 @@ app.use(errorConverter);
 // handle error
 app.use(errorHandler);
 
-module.exports = app;
+module.exports = {
+  app,
+  io,
+};

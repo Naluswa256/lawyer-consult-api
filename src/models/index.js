@@ -4,3 +4,6 @@ module.exports.Review = require('./review.model');
 module.exports.Specialization = require('./specialization.model');
 module.exports.Appointment = require('./appointment.model');
 module.exports.UserOTP = require('./verifyOtp.model');
+module.exports.Notification = require('./notification.model');
+module.exports.Package = require('./package.model');
+module.exports.Issue = require('./issue.model');

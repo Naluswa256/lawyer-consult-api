@@ -17,6 +17,7 @@ router
   .delete(auth('manageUsers'), validate(userValidation.deleteUser), userController.deleteUser);
 
 router.route('/update-profile').patch(auth(), validate(userValidation.updateUser), userController.updateUser);
+router.route('/save-fcm-token').post(auth(), validate(userValidation.saveFcmToken), userController.saveFcmToken);
 
 module.exports = router;
 

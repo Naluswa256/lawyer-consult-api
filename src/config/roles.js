@@ -8,17 +8,8 @@ const allRoles = {
     'manageAppointments',
     'manageCategories',
     'manageSpecializations',
-    'getSpecializations',
   ],
-  lawyer: [
-    'viewProfile',
-    'updateProfile',
-    'viewAppointments',
-    'manageAppointments',
-    'viewReviews',
-    'manageAvailability',
-    'getSpecializations',
-  ],
+  lawyer: ['viewProfile', 'updateProfile', 'viewAppointments', 'manageAppointments', 'viewReviews', 'manageAvailability'],
   customer: ['viewLawyers', 'bookAppointment', 'viewAppointments', 'cancelAppointment', 'leaveReview', 'updateProfile'],
 };
 

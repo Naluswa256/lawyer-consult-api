@@ -22,7 +22,18 @@ const getSpecializations = async () => {
   return specializations;
 };
 
+/**
+ * Search specializations by name
+ * @param {string} name - The name or partial name to search for
+ * @returns {Promise<Array>} - List of matching specializations
+ */
+const searchSpecializationsByName = async (name) => {
+  const regex = new RegExp(name, 'i');
+  return Specialization.find({ name: { $regex: regex } });
+};
+
 module.exports = {
   createSpecialization,
   getSpecializations,
+  searchSpecializationsByName,
 };
