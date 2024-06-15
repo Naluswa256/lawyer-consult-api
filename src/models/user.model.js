@@ -69,10 +69,6 @@ const userSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    rating: {
-      type: Number,
-      default: 0,
-    },
     appointments: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -170,23 +166,28 @@ const userSchema = mongoose.Schema(
         ref: 'Appointment',
       },
     ],
-    givenReviews: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review',
-      },
-    ],
-    receivedReviews: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review',
-      },
-    ],
+    averageRating: {
+      type: Number,
+      default: 0,
+    },
+    numOfReviews: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+userSchema.virtual('reviews', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'lawyer',
+  justOne: false,
+});
 
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);

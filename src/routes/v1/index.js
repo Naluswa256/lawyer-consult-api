@@ -8,6 +8,7 @@ const lawyersRoute = require('./lawyer.route');
 const config = require('../../config/config');
 const servicesRoute = require('./package.route');
 const paymentRoute = require('./payment.route');
+const reviewRoute = require('./review.route');
 
 const router = express.Router();
 
@@ -39,6 +40,10 @@ const defaultRoutes = [
   {
     path: '/payment',
     route: paymentRoute,
+  },
+  {
+    path: '/reviews',
+    route: reviewRoute,
   },
 ];
 
