@@ -59,7 +59,9 @@ if (config.env === 'production') {
 
 // v1 api routes
 app.use('/v1', routes);
-
+app.get('/keep-alive', (req, res) => {
+  res.send('Server is alive');
+});
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
   next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
