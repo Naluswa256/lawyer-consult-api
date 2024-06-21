@@ -19,7 +19,7 @@ router.post('/avatar', auth(), upload.single('avatar'), async (req, res) => {
       return res.status(httpStatus.NOT_FOUND).send('User not found.');
     }
 
-    user.avatar = `${config.server_host}:${config.port}/uploads/${req.file.filename}`;
+    user.avatar = `${config.server_host}/uploads/${req.file.filename}`;
     await user.save();
 
     res.status(httpStatus.OK).send('Avatar updated successfully.');
