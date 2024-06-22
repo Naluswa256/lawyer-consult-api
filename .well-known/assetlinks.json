@@ -1,0 +1,9 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.sizzle_starter",
+      "sha256_cert_fingerprints":
+      ["1B:4E:DF:BD:51:68:6A:F3:E6:03:F2:C8:D5:3A:B9:FF:64:D3:AF:C2:7E:BE:69:9F:2E:CB:7F:D8:5E:F7:9E:3A"]
+    }
+  }]

@@ -23,7 +23,7 @@ if (config.env !== 'test') {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
-
+app.use('/.well-known', express.static(path.join(__dirname, '.well-known')));
 // set security HTTP headers
 app.use(helmet());
 
