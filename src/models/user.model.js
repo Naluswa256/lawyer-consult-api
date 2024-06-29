@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema(
       },
     },
     fcmToken: {},
+    about: {
+      type: String,
+      default: '',
+    },
     fullNames: {
       type: String,
       default: '',
