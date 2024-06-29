@@ -17,8 +17,8 @@ const createSpecialization = async (specializationBody) => {
  * Get all specializations
  * @returns {Promise<Array<Specialization>>}
  */
-const getSpecializations = async () => {
-  const specializations = await Specialization.find();
+const getSpecializations = async (filter,options) => {
+  const specializations = await Specialization.paginate(filter, options);
   return specializations;
 };
 

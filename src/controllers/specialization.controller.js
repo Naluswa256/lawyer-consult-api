@@ -8,7 +8,9 @@ const createSpecialization = catchAsync(async (req, res) => {
 });
 
 const getSpecializations = catchAsync(async (req, res) => {
-  const specializations = await specializationService.getSpecializations();
+  const filter = {};
+  const options = pick(req.query, ['limit', 'page']);
+  const specializations = await specializationService.getSpecializations(filter, options);
   res.send(specializations);
 });
 const searchSpecializations = catchAsync(async (req, res) => {

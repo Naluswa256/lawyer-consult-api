@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const {paginate} = require('./plugins');
 const { Schema } = mongoose;
 
 // Specialization Schema
@@ -14,6 +14,7 @@ const specializationSchema = new Schema({
     required: false,
   },
 });
+specializationSchema.plugin(paginate);
 // Static method to check if the specialization name is taken
 specializationSchema.statics.isNameTaken = async function (name, excludeSpecializationId) {
   const specialization = await this.findOne({ name, _id: { $ne: excludeSpecializationId } });
