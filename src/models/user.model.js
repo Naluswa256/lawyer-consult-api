@@ -164,7 +164,7 @@ const userSchema = mongoose.Schema(
       },
     ],
 
-    Bookings: [
+    bookings: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Appointment',
