@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const { toJSON, paginate } = require('./plugins');
 const { roles } = require('../config/roles');
 
-const userSchema = mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
@@ -186,11 +186,29 @@ const userSchema = mongoose.Schema(
   }
 );
 
-userSchema.virtual('reviews', {
+// Virtual field for reviews received
+userSchema.virtual('reviewsReceived', {
   ref: 'Review',
   localField: '_id',
   foreignField: 'lawyer',
   justOne: false,
+});
+
+// Virtual field for reviews given
+userSchema.virtual('reviewsGiven', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'user',
+  justOne: false,
+});
+
+// Virtual field for number of completed consultations
+userSchema.virtual('completedConsultations', {
+  ref: 'Appointment',
+  localField: '_id',
+  foreignField: 'lawyer',
+  count: true,
+  match: { status: 'completed' },
 });
 
 // add plugin that converts mongoose to json

@@ -46,9 +46,17 @@ const getUserById = async (id) => {
  * @returns {Promise<User>}
  */
 const getUserByEmail = async (email) => {
-  return User.findOne({ email }).populate('bookings')
+  return User.findOne({ email }).populate({
+    path: 'reviewsReceived',
+    select: '-_id rating comment',
+    populate: {
+      path: 'user',
+      select: 'avatar fullNames',
+    },
+  }).populate('bookings')
   .populate('appointments')
-  .populate('specializations');
+  .populate('specializations')
+  .populate('completedConsultations');
 };
 
 /**

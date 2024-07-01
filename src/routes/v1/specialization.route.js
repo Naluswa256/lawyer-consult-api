@@ -11,7 +11,7 @@ const router = express.Router();
 router
   .route('/')
   .post(
-    auth('manageSpecializations'),
+    auth(),
     validate(specializationValidation.createSpecialization),
     specializationController.createSpecialization
   )
