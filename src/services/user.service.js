@@ -54,9 +54,10 @@ const getUserByEmail = async (email) => {
       select: 'avatar fullNames',
     },
   }).populate('bookings')
-  .populate('appointments')
-  .populate('specializations')
-  .populate('completedConsultations');
+  .populate('appointments').populate({
+    path: 'specializations',
+    select: 'name',
+  })
 };
 
 /**

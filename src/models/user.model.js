@@ -156,6 +156,19 @@ const userSchema = new mongoose.Schema(
         },
       },
     ],
+    reviewsReceived:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review',
+      }],
+    reviewsGiven:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review',
+      }],
+
+    completedConsultations: {
+      type: Number,
+      default: 0,
+    },
 
     socialMediaLinkedAccounts: [
       {
@@ -181,35 +194,8 @@ const userSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
   }
 );
-
-// Virtual field for reviews received
-userSchema.virtual('reviewsReceived', {
-  ref: 'Review',
-  localField: '_id',
-  foreignField: 'lawyer',
-  justOne: false,
-});
-
-// Virtual field for reviews given
-userSchema.virtual('reviewsGiven', {
-  ref: 'Review',
-  localField: '_id',
-  foreignField: 'user',
-  justOne: false,
-});
-
-// Virtual field for number of completed consultations
-userSchema.virtual('completedConsultations', {
-  ref: 'Appointment',
-  localField: '_id',
-  foreignField: 'lawyer',
-  count: true,
-  match: { status: 'completed' },
-});
 
 // add plugin that converts mongoose to json
 userSchema.plugin(toJSON);
