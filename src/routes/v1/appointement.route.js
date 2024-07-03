@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
-const uploadMiddleware = require('../../middlewares/upload');
+const upload = require('../../config/fileUpload');
 const validateAppointment = require('../../validations/appointment.validation');
 const AppointmentController = require('../../controllers/appointment.controller');
 
@@ -33,7 +33,7 @@ router.post('/:appointmentId/confirm', auth(), AppointmentController.confirmMeet
 router.post(
   '/:appointmentId/report-issue',
   auth(),
-  uploadMiddleware.single('proof'),
+  upload.single('proof'),
   AppointmentController.reportIssue
 );
 router.get('/issues', auth('admin'), AppointmentController.getAllIssues);
