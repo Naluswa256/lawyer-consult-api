@@ -37,7 +37,6 @@ async function seedLawyers() {
       lawyer.specializations = randomSpecializations;
     });
 
-    await User.deleteMany({ role: 'lawyer' }); // Clear existing lawyers if needed
     await User.insertMany(sampleLawyers);
     logger.info('Sample lawyers seeded successfully.');
 
