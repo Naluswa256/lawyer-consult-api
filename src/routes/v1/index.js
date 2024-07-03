@@ -9,7 +9,7 @@ const config = require('../../config/config');
 const servicesRoute = require('./package.route');
 const paymentRoute = require('./payment.route');
 const reviewRoute = require('./review.route');
-
+const appointmentRoute = require('./appointement.route')
 const router = express.Router();
 
 const defaultRoutes = [
@@ -44,6 +44,10 @@ const defaultRoutes = [
   {
     path: '/reviews',
     route: reviewRoute,
+  },
+  {
+    path: '/appointments',
+    route: appointmentRoute,
   },
 ];
 
