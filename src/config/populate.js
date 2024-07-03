@@ -290,7 +290,7 @@ const specializations = [
       startTime: new Date('2024-07-10T09:00:00Z'),
       endTime: new Date('2024-07-10T10:00:00Z'),
       topic: 'Legal Consultation',
-      status: 'accepted',
+      status: 'confirmed',
       package: {
         duration: 60, // Duration in minutes
         price: 100, // Price in your currency
