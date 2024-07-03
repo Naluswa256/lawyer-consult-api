@@ -285,7 +285,7 @@ const specializations = [
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
       appointmentType: 'videoCall',
-      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      lawyerId: '66854579d3be02006d3d6d99', // Replace with actual lawyer ID
       date: new Date('2024-07-10'),
       startTime: new Date('2024-07-10T09:00:00Z'),
       endTime: new Date('2024-07-10T10:00:00Z'),
@@ -300,7 +300,7 @@ const specializations = [
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
       appointmentType: 'voiceCall',
-      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      lawyerId: '66854579d3be02006d3d6d99', // Replace with actual lawyer ID
       date: new Date('2024-07-12'),
       startTime: new Date('2024-07-12T14:00:00Z'),
       endTime: new Date('2024-07-12T15:00:00Z'),
@@ -315,7 +315,7 @@ const specializations = [
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
       appointmentType: 'physicalMeeting',
-      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      lawyerId: '66854579d3be02006d3d6d99', // Replace with actual lawyer ID
       date: new Date('2024-07-15'),
       startTime: new Date('2024-07-15T10:00:00Z'),
       endTime: new Date('2024-07-15T12:00:00Z'),
@@ -330,7 +330,7 @@ const specializations = [
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
       appointmentType: 'videoCall',
-      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      lawyerId: '66854579d3be02006d3d6d99', // Replace with actual lawyer ID
       date: new Date('2024-07-18'),
       startTime: new Date('2024-07-18T16:00:00Z'),
       endTime: new Date('2024-07-18T17:00:00Z'),
@@ -345,7 +345,7 @@ const specializations = [
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
       appointmentType: 'voiceCall',
-      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      lawyerId: '66854579d3be02006d3d6d99', // Replace with actual lawyer ID
       date: new Date('2024-07-20'),
       startTime: new Date('2024-07-20T11:00:00Z'),
       endTime: new Date('2024-07-20T12:00:00Z'),
@@ -360,7 +360,7 @@ const specializations = [
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
       appointmentType: 'physicalMeeting',
-      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      lawyerId: '66854579d3be02006d3d6d99', // Replace with actual lawyer ID
       date: new Date('2024-07-22'),
       startTime: new Date('2024-07-22T15:00:00Z'),
       endTime: new Date('2024-07-22T17:00:00Z'),

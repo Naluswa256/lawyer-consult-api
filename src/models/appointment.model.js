@@ -16,16 +16,7 @@ function generateBookingReference() {
   return bookingCode;
 }
 
-const packageSchema = new Schema({
-  duration: {
-    type: Number, // Duration in minutes (e.g., 30, 60, 90)
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-});
+
 
 const appointmentSchema = new Schema(
   {
@@ -76,8 +67,8 @@ const appointmentSchema = new Schema(
       trim: true,
     },
     package: {
-      type: packageSchema,
-      required: true,
+      duration: { type: Number, required: true },
+      price: { type: Number, required: true },
     },
     bookingReference: {
       type: String,

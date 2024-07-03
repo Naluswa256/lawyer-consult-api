@@ -79,7 +79,7 @@ const getAppointmentsByUser = (userId) => Appointment.find({ userId }).populate(
   select: '-_id duration price'
 })
 .select('-iv -tag')
-.exec();;
+.exec();
 
 /**
  * Fetches an appointment by its ID.
