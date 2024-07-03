@@ -18,7 +18,6 @@ const appointmentSchema = {
     startTime: Joi.date().iso().required(),
     endTime: Joi.date().iso().required(),
     topic: Joi.string().required(),
-    attachedDocuments: Joi.array().items(Joi.string()),
     notes: Joi.string()
       .optional()
       .custom((value, helpers) => maxWords(value, 100, helpers), 'custom word limit validation'),

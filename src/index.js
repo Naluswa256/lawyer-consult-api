@@ -3,11 +3,10 @@ const { app, io } = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
 const socketLogic = require('./utils/socket');
-const {User, Specialization} = require('./models');
-const {specializations, sampleLawyers} = require('./config/populate');
+const { User, Specialization, Appointment } = require('./models'); // Import Appointment model
+const { specializations, sampleLawyers, sampleAppointments } = require('./config/populate'); // Import sampleAppointments
 
 let server;
-
 
 async function fetchSpecializationIds() {
   try {
@@ -48,6 +47,17 @@ async function seedLawyers() {
   }
 }
 
+async function seedAppointments() {
+  try {
+    await Appointment.deleteMany({}); // Clear existing appointments if needed
+    await Appointment.insertMany(sampleAppointments); // Insert sample appointments
+    logger.info('Sample appointments seeded successfully.');
+  } catch (error) {
+    logger.error('Error seeding sample appointments:', error);
+    throw error;
+  }
+}
+
 function getRandomSpecializations(specializationIds, count) {
   const shuffledIds = specializationIds.sort(() => 0.5 - Math.random());
   return shuffledIds.slice(0, count);
@@ -56,21 +66,26 @@ function getRandomSpecializations(specializationIds, count) {
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info('Connected to MongoDB');
 
-  // Call the seeding function after successful connection
+  // Call the seeding functions after successful connection
   seedSpecializations().then(() => {
     fetchSpecializationIds().then(() => {
       seedLawyers().then(() => {
-        server = app.listen(config.port, () => {
-          logger.info(`Listening to port ${config.port}`);
-        });
+        seedAppointments().then(() => {
+          server = app.listen(config.port, () => {
+            logger.info(`Listening to port ${config.port}`);
+          });
 
-        io.on('connection', (socket) => {
-          logger.info('New client connected');
-          socketLogic(socket);
+          io.on('connection', (socket) => {
+            logger.info('New client connected');
+            socketLogic(socket);
+          });
+        }).catch((error) => {
+          logger.error('Error seeding appointments:', error);
+          process.exit(1); // Exit process if seeding appointments fails
         });
       }).catch((error) => {
         logger.error('Error seeding lawyers:', error);
-        process.exit(1); // Exit process if seeding fails
+        process.exit(1); // Exit process if seeding lawyers fails
       });
     }).catch((error) => {
       logger.error('Error fetching specializations:', error);

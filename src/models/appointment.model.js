@@ -60,10 +60,6 @@ const appointmentSchema = new Schema(
       type: String,
       required: true,
     },
-    attachedDocument: {
-      type: [String],
-      required: false,
-    },
     status: {
       type: String,
       enum: ['pending', 'confirmed', 'completed', 'cancelled', 'rejected'],

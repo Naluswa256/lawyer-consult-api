@@ -67,14 +67,38 @@ const getAppointmentsByLawyer = (lawyerId) => Appointment.find({ lawyerId });
  * @param {string} userId - The ID of the user.
  * @returns {Promise<Array<Appointment>>} The list of appointments.
  */
-const getAppointmentsByUser = (userId) => Appointment.find({ userId });
+const getAppointmentsByUser = (userId) => Appointment.find({ userId }).populate({
+  path: 'userId',
+  select: 'avatar fullNames'
+}).populate({
+  path: 'lawyerId',
+  select: 'avatar fullNames'
+})
+.populate({
+  path: 'package',
+  select: '-_id duration price'
+})
+.select('-iv -tag')
+.exec();;
 
 /**
  * Fetches an appointment by its ID.
  * @param {string} appointmentId - The ID of the appointment.
  * @returns {Promise<Appointment>} The appointment.
  */
-const getAppointmentById = (appointmentId) => Appointment.findById(appointmentId);
+const getAppointmentById = (appointmentId) => Appointment.findById(appointmentId).populate({
+  path: 'userId',
+  select: 'avatar fullNames'
+}).populate({
+  path: 'lawyerId',
+  select: 'avatar fullNames'
+})
+.populate({
+  path: 'package',
+  select: '-_id duration price'
+})
+.select('-iv -tag')
+.exec();
 
 /**
  * Fetches an appointment by its booking reference.

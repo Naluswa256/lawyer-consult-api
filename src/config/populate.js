@@ -281,7 +281,103 @@ const specializations = [
     // Add more sample lawyers as needed
   ];
 
+  const sampleAppointments = [
+    {
+      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
+      appointmentType: 'videoCall',
+      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      date: new Date('2024-07-10'),
+      startTime: new Date('2024-07-10T09:00:00Z'),
+      endTime: new Date('2024-07-10T10:00:00Z'),
+      topic: 'Legal Consultation',
+      status: 'accepted',
+      package: {
+        duration: 60, // Duration in minutes
+        price: 100, // Price in your currency
+      },
+      isAnonymous: false,
+    },
+    {
+      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
+      appointmentType: 'voiceCall',
+      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      date: new Date('2024-07-12'),
+      startTime: new Date('2024-07-12T14:00:00Z'),
+      endTime: new Date('2024-07-12T15:00:00Z'),
+      topic: 'Contract Review',
+      status: 'pending',
+      package: {
+        duration: 60, // Duration in minutes
+        price: 150, // Price in your currency
+      },
+      isAnonymous: false,
+    },
+    {
+      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
+      appointmentType: 'physicalMeeting',
+      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      date: new Date('2024-07-15'),
+      startTime: new Date('2024-07-15T10:00:00Z'),
+      endTime: new Date('2024-07-15T12:00:00Z'),
+      topic: 'Litigation Strategy',
+      status: 'confirmed',
+      package: {
+        duration: 120, // Duration in minutes
+        price: 200, // Price in your currency
+      },
+      isAnonymous: false,
+    },
+    {
+      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
+      appointmentType: 'videoCall',
+      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      date: new Date('2024-07-18'),
+      startTime: new Date('2024-07-18T16:00:00Z'),
+      endTime: new Date('2024-07-18T17:00:00Z'),
+      topic: 'Legal Advice on Property',
+      status: 'cancelled',
+      package: {
+        duration: 60, // Duration in minutes
+        price: 120, // Price in your currency
+      },
+      isAnonymous: false,
+    },
+    {
+      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
+      appointmentType: 'voiceCall',
+      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      date: new Date('2024-07-20'),
+      startTime: new Date('2024-07-20T11:00:00Z'),
+      endTime: new Date('2024-07-20T12:00:00Z'),
+      topic: 'Consultation on Intellectual Property',
+      status: 'rejected',
+      package: {
+        duration: 60, // Duration in minutes
+        price: 100, // Price in your currency
+      },
+      isAnonymous: false,
+    },
+    {
+      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
+      appointmentType: 'physicalMeeting',
+      lawyerId: '66827ad9f8a13e006e2fa1c0', // Replace with actual lawyer ID
+      date: new Date('2024-07-22'),
+      startTime: new Date('2024-07-22T15:00:00Z'),
+      endTime: new Date('2024-07-22T17:00:00Z'),
+      topic: 'Contract Negotiation',
+      status: 'completed',
+      package: {
+        duration: 120, // Duration in minutes
+        price: 250, // Price in your currency
+      },
+      isAnonymous: false,
+    },
+  ];
+  
+
+
   module.exports = {
     specializations, 
-    sampleLawyers
+    sampleLawyers,
+    sampleAppointments
   }

@@ -6,7 +6,7 @@ const config = require('../config/config');
 const bookAppointment = catchAsync(async (req, res) => {
   const { lawyerId, date, startTime, endTime, topic, notes, packageId, appointmentType } = req.validatedBody;
   const { _id: userId } = req.user;
-  const attachedDocumentsUrls = req.files.map((file) => `${config.server_host}:${config.port}/uploads/${file.filename}`);
+ // const attachedDocumentsUrls = req.files.map((file) => `${config.server_host}:${config.port}/uploads/${file.filename}`);
   const appointmentData = {
     userId,
     lawyerId,
@@ -14,7 +14,6 @@ const bookAppointment = catchAsync(async (req, res) => {
     startTime,
     endTime,
     topic,
-    attachedDocumentsUrls,
     notes,
     packageId,
     appointmentType,

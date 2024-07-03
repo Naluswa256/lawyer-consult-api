@@ -10,7 +10,6 @@ const AppointmentController = require('../../controllers/appointment.controller'
 router.post(
   '/appointments',
   auth(),
-  uploadMiddleware,
   validate(validateAppointment.appointmentSchema),
   AppointmentController.bookAppointment
 );
