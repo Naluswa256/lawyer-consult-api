@@ -36,7 +36,12 @@ const searchLawyersByName = catchAsync(async (req, res) => {
 
 const fetchPopularLawyers = catchAsync(async (req, res) => {
   const { page, limit } = req.query;
-  const filter = { isProfilePublic: true };
+  const filter = { isProfilePublic: true, $or: [
+    { isVerified: true },
+    { completedConsultations: { $gte: 5 } },
+    { numOfReviews: { $gte: 5 } },
+    { averageRating: { $gte: 4.5 } }
+  ],};
   const options = { sortBy: 'rating:desc,receivedReviews:desc', limit, page }; // Sorting by rating and receivedReviews in descending order
   const popularLawyers = await lawyerService.fetchPopularLawyers(filter, options);
   res.status(httpStatus.OK).send(popularLawyers);
