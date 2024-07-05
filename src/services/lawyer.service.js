@@ -14,7 +14,7 @@ const populateUserFields = (query) => {
   return query
     .populate({
       path: 'reviewsReceived',
-      select: '-_id rating comment',
+      select: { rating: 1, comment: 1 },
       populate: [
         {
           path: 'user',
@@ -28,7 +28,7 @@ const populateUserFields = (query) => {
     })
     .populate({
       path: 'reviewsGiven',
-      select: '-_id rating comment',
+      select: { rating: 1, comment: 1 },
       populate: [
         {
           path: 'user',
@@ -56,7 +56,7 @@ const populateUserFields = (query) => {
     })
     .populate({
       path: 'specializations',
-      select: 'name -_id -description',
+      select: { name: 1 },
     });
 };
 
