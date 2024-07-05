@@ -22,7 +22,7 @@ router.post(
 router.get('/', auth(), AppointmentController.getAllAppointments);
 router.get('/lawyer/:lawyerId', auth(), AppointmentController.getAppointmentsByLawyer);
 router.get('/user/:userId', auth(), AppointmentController.getAppointmentsByUser);
-router.get('happening-today/user/:userId', auth(), AppointmentController.getTodayAppointmentsByUser);
+router.get('/happening-today/user/:userId', auth(), AppointmentController.getTodayAppointmentsByUser);
 router.get('/:appointmentId', auth(), AppointmentController.getAppointmentById);
 router.get(
   '/booking-reference/:bookingReference',
