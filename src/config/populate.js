@@ -70,7 +70,7 @@ const specializations = [
 
   const sampleLawyers = [
     {
-      email: 'lawyer5@example.com',
+      email: 'lawyer9@example.com',
       fullNames: 'John Doe',
       phoneNumber: '1234567890',
       location: 'Kampala, Uganda',
@@ -122,7 +122,7 @@ const specializations = [
       numOfReviews: 0,
     },
     {
-      email: 'lawyer6@example.com',
+      email: 'lawyer10@example.com',
       fullNames: 'Trevah Noah',
       phoneNumber: '1234567890',
       location: 'Kampala, Uganda',
@@ -174,7 +174,7 @@ const specializations = [
       numOfReviews: 0,
     },
     {
-      email: 'lawyer7@example.com',
+      email: 'lawyer11@example.com',
       fullNames: 'Kabonge Allan',
       phoneNumber: '1234567890',
       location: 'Kampala, Uganda',
@@ -226,7 +226,7 @@ const specializations = [
       numOfReviews: 0,
     },
     {
-      email: 'lawyer8@example.com',
+      email: 'lawyer12@example.com',
       fullNames: 'Naluswa William',
       phoneNumber: '1234567890',
       location: 'Kampala, Uganda',

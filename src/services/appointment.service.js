@@ -67,19 +67,22 @@ const getAppointmentsByLawyer = (lawyerId) => Appointment.find({ lawyerId });
  * @param {string} userId - The ID of the user.
  * @returns {Promise<Array<Appointment>>} The list of appointments.
  */
-const getAppointmentsByUser = (userId) => Appointment.find({ userId }).populate({
-  path: 'userId',
-  select: 'avatar fullNames'
-}).populate({
-  path: 'lawyerId',
-  select: 'avatar fullNames'
-})
-.populate({
-  path: 'package',
-  select: '-_id duration price'
-})
-.select('-iv -tag')
-.exec();
+const getAppointmentsByUser = async (userId, options) => {
+  const filter = { userId, status: { $ne: 'pending' } };
+  const appointments = await Appointment.paginate(filter, options);
+  return appointments.populate({
+    path: 'userId',
+    select: 'avatar fullNames'
+  }).populate({
+    path: 'lawyerId',
+    select: 'avatar fullNames'
+  })
+  .populate({
+    path: 'package',
+    select: '-_id duration price'
+  })
+  .select('-iv -tag');
+};
 
 /**
  * Fetches an appointment by its ID.

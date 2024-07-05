@@ -176,13 +176,6 @@ const userSchema = new mongoose.Schema(
         url: String,
       },
     ],
-
-    bookings: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Appointment',
-      },
-    ],
     averageRating: {
       type: Number,
       default: 0,

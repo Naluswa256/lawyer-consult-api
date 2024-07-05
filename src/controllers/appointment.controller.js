@@ -51,10 +51,11 @@ const getAppointmentsByLawyer = catchAsync(async (req, res) => {
 
 const getAppointmentsByUser = catchAsync(async (req, res) => {
   const { userId } = req.params;
-  const appointments = await appointmentService.getAppointmentsByUser(userId);
+  const { page = 1, limit = 10 } = req.query;
+  const options = { page, limit };
+  const appointments = await appointmentService.getAppointmentsByUser(userId, options);
   res.status(httpStatus.OK).json(appointments);
 });
-
 const getAppointmentById = catchAsync(async (req, res) => {
   const { appointmentId } = req.params;
   const appointment = await appointmentService.getAppointmentById(appointmentId);

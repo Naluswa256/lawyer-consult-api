@@ -49,15 +49,52 @@ const getUserByEmail = async (email) => {
   return User.findOne({ email }).populate({
     path: 'reviewsReceived',
     select: '-_id rating comment',
-    populate: {
-      path: 'user',
-      select: 'avatar fullNames',
-    },
-  }).populate('bookings')
-  .populate('appointments').populate({
-    path: 'specializations',
-    select: 'name',
+    populate: [
+      {
+       path:'user',
+       select:'avatar fullNames'
+      },
+      {
+        path:'lawyer',
+        select:'avatar fullNames'
+      }
+
+    ]
+  }).populate({
+    path: 'reviewsGiven',
+    select: '-_id rating comment',
+    populate: [
+      {
+        path:'user',
+        select:'avatar fullNames'
+      },
+      {
+        path:'lawyer',
+        select:'avatar fullNames'
+      }
+    ]
   })
+  .populate({
+    path: 'appointments',
+    populate: [
+      {
+        path: 'userId',
+        select: 'avatar fullNames',
+      },
+      {
+        path: 'lawyerId',
+        select: 'avatar fullNames',
+      },
+      {
+        path: 'package',
+        select: '-_id duration price',
+      },
+    ],
+    select: '-iv -tag',
+  }).populate({
+    path: 'specializations',
+    select: 'name -_id -description',
+  });
 };
 
 /**
