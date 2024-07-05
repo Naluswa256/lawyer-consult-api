@@ -136,6 +136,7 @@ const specializations = [
       endTime: new Date('2024-07-10T10:00:00Z'),
       topic: 'Legal Consultation',
       status: 'confirmed',
+      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       package: {
         duration: 60, // Duration in minutes
         price: 100, // Price in your currency
@@ -150,6 +151,7 @@ const specializations = [
       startTime: new Date('2024-07-12T14:00:00Z'),
       endTime: new Date('2024-07-12T15:00:00Z'),
       topic: 'Contract Review',
+      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'pending',
       package: {
         duration: 60, // Duration in minutes
@@ -165,6 +167,7 @@ const specializations = [
       startTime: new Date('2024-07-15T10:00:00Z'),
       endTime: new Date('2024-07-15T12:00:00Z'),
       topic: 'Litigation Strategy',
+      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'confirmed',
       package: {
         duration: 120, // Duration in minutes
@@ -180,6 +183,7 @@ const specializations = [
       startTime: new Date('2024-07-18T16:00:00Z'),
       endTime: new Date('2024-07-18T17:00:00Z'),
       topic: 'Legal Advice on Property',
+      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'cancelled',
       package: {
         duration: 60, // Duration in minutes
@@ -195,6 +199,7 @@ const specializations = [
       startTime: new Date('2024-07-20T11:00:00Z'),
       endTime: new Date('2024-07-20T12:00:00Z'),
       topic: 'Consultation on Intellectual Property',
+      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'rejected',
       package: {
         duration: 60, // Duration in minutes
@@ -210,6 +215,7 @@ const specializations = [
       startTime: new Date('2024-07-22T15:00:00Z'),
       endTime: new Date('2024-07-22T17:00:00Z'),
       topic: 'Contract Negotiation',
+      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'completed',
       package: {
         duration: 120, // Duration in minutes

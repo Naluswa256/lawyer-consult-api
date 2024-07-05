@@ -5,32 +5,38 @@ const { User, Appointment } = require('../models');
  * @param {Query} query - The Mongoose query object
  * @returns {Query} - The populated query
  */
+/**
+ * Common function to populate User fields
+ * @param {Query} query - The Mongoose query object
+ * @returns {Query} - The populated query
+ */
 const populateUserFields = (query) => {
   return query
     .populate({
       path: 'reviewsReceived',
       select: '-_id rating comment',
-      populate:[
-      {
-        path:'user',
-        select:'avatar fullNames'
-      },
-      {
-        path:'lawyer',
-        select:'avatar fullNames'
-      }
-      ]
-    }).populatee({
-      path:'reviewsGiven',
-      select:'-_id rating comment',
-      populate:[
+      populate: [
         {
-         path:'user',
-         select:'avatar fullNames'
+          path: 'user',
+          select: 'avatar fullNames'
         },
         {
-         path:'lawyer',
-         select:'avatar fullNames'
+          path: 'lawyer',
+          select: 'avatar fullNames'
+        }
+      ]
+    })
+    .populate({
+      path: 'reviewsGiven',
+      select: '-_id rating comment',
+      populate: [
+        {
+          path: 'user',
+          select: 'avatar fullNames'
+        },
+        {
+          path: 'lawyer',
+          select: 'avatar fullNames'
         }
       ]
     })
@@ -45,10 +51,6 @@ const populateUserFields = (query) => {
           path: 'lawyerId',
           select: 'avatar fullNames',
         },
-        {
-          path: 'package',
-          select: '-_id duration price',
-        },
       ],
       select: '-iv -tag',
     })
@@ -58,12 +60,10 @@ const populateUserFields = (query) => {
     });
 };
 
-/**
- * Fetch lawyers by specialization ID
- */
 const fetchLawyersBySpecialization = async (filter, options) => {
-  const users = await User.paginate(filter, options);
-  return populateUserFields(users);
+  const usersResult = await User.paginate(filter, options);
+  usersResult.results = await populateUserFields(User.find({ _id: { $in: usersResult.results.map(user => user._id) } })).exec();
+  return usersResult;
 };
 
 /**
@@ -84,8 +84,9 @@ const searchLawyersInSpecializationByName = async (specializationId, name, limit
     limit,
     page,
   };
-  const users = await User.paginate(filter, options);
-  return populateUserFields(users);
+  const usersResult = await User.paginate(filter, options);
+  usersResult.results = await populateUserFields(User.find({ _id: { $in: usersResult.results.map(user => user._id) } })).exec();
+  return usersResult;
 };
 
 /**
@@ -104,16 +105,18 @@ const searchLawyersByName = async (name, limit = 10, page = 1) => {
     limit,
     page,
   };
-  const users = await User.paginate(filter, options);
-  return populateUserFields(users);
+  const usersResult = await User.paginate(filter, options);
+  usersResult.results = await populateUserFields(User.find({ _id: { $in: usersResult.results.map(user => user._id) } })).exec();
+  return usersResult;
 };
 
 /**
  * Fetch popular lawyers.
  */
 const fetchPopularLawyers = async (filter, options) => {
-  const users = await User.paginate(filter, options);
-  return populateUserFields(users);
+  const usersResult = await User.paginate(filter, options);
+  usersResult.results = await populateUserFields(User.find({ _id: { $in: usersResult.results.map(user => user._id) } })).exec();
+  return usersResult;
 };
 
 /**
