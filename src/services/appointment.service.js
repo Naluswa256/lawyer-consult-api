@@ -69,19 +69,23 @@ const getAppointmentsByLawyer = (lawyerId) => Appointment.find({ lawyerId });
  */
 const getAppointmentsByUser = async (userId, options) => {
   const filter = { userId, status: { $ne: 'pending' } };
-  const appointments = await Appointment.paginate(filter, options);
-  return appointments.populate({
-    path: 'userId',
-    select: 'avatar fullNames'
-  }).populate({
-    path: 'lawyerId',
-    select: 'avatar fullNames'
-  })
-  .populate({
-    path: 'package',
-    select: '-_id duration price'
-  })
-  .select('-iv -tag');
+  const { results, totalResults,page,limit,totalPages} = await Appointment.paginate(filter, options);
+
+  // Manually populate userId, lawyerId, and package fields
+  const populatedAppointments = await Appointment.populate(results, [
+    { path: 'userId', select: 'avatar fullNames' },
+    { path: 'lawyerId', select: 'avatar fullNames' },
+    { path: 'package', select: '-_id duration price' }
+  ]);
+
+  // Return populated appointments with selected fields
+  return {
+    results: populatedAppointments,   
+    page, 
+    limit, 
+    totalPages,
+    totalResults,
+  };
 };
 
 /**
