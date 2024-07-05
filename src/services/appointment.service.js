@@ -69,24 +69,27 @@ const getAppointmentsByLawyer = (lawyerId) => Appointment.find({ lawyerId });
  */
 const getAppointmentsByUser = async (userId, options) => {
   const filter = { userId, status: { $ne: 'pending' } };
-  const { results, totalResults,page,limit,totalPages} = await Appointment.paginate(filter, options);
+  const { results, totalResults, totalPages, limit, page } = await Appointment.paginate(filter, options); 
+  const appointmentIds = results.map(appointment => appointment._id);
 
-  // Manually populate userId, lawyerId, and package fields
-  const populatedAppointments = await Appointment.populate(results, [
-    { path: 'userId', select: 'avatar fullNames' },
-    { path: 'lawyerId', select: 'avatar fullNames' },
-    { path: 'package', select: '-_id duration price' }
-  ]);
+  const populatedAppointments = [];
 
-  // Return populated appointments with selected fields
+  for (const appointmentId of appointmentIds) {
+    const appointment = await Appointment.findById(appointmentId)
+      .populate('userId', 'avatar fullNames')  
+      .populate('lawyerId', 'avatar fullNames')
+    populatedAppointments.push(appointment);
+  }
+
   return {
-    results: populatedAppointments,   
+    results: populatedAppointments,
     page, 
     limit, 
     totalPages,
     totalResults,
   };
 };
+
 
 /**
  * Fetches an appointment by its ID.
@@ -99,10 +102,6 @@ const getAppointmentById = (appointmentId) => Appointment.findById(appointmentId
 }).populate({
   path: 'lawyerId',
   select: 'avatar fullNames'
-})
-.populate({
-  path: 'package',
-  select: '-_id duration price'
 })
 .select('-iv -tag')
 .exec();
