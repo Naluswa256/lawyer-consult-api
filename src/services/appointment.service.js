@@ -89,6 +89,33 @@ const getAppointmentsByUser = async (userId, options) => {
     totalResults,
   };
 };
+const getTodaysAppointmentsByUser = async (userId, options) => {
+  const today = new Date().toISOString().slice(0, 10);
+  const filter = {
+    userId,
+    date: today,
+    status: { $nin: ['cancelled', 'rejected', 'pending'] }, 
+  };
+  const { results, totalResults, totalPages, limit, page } = await Appointment.paginate(filter, options); 
+  const appointmentIds = results.map(appointment => appointment._id);
+
+  const populatedAppointments = [];
+
+  for (const appointmentId of appointmentIds) {
+    const appointment = await Appointment.findById(appointmentId)
+      .populate('userId', 'avatar fullNames')  
+      .populate('lawyerId', 'avatar fullNames')
+    populatedAppointments.push(appointment);
+  }
+
+  return {
+    results: populatedAppointments,
+    page, 
+    limit, 
+    totalPages,
+    totalResults,
+  };
+};
 
 
 /**
@@ -196,6 +223,7 @@ module.exports = {
   getAllAppointments,
   getAppointmentsByLawyer,
   getAppointmentsByUser,
+  getTodaysAppointmentsByUser,
   getAppointmentById,
   getAppointmentByBookingReference,
   cancelAppointment,
