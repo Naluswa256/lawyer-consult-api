@@ -71,7 +71,7 @@ const specializations = [
   const sampleLawyers = [
   
     {
-      email: 'lawyer24@example.com',
+      email: 'lawyer25@example.com',
       fullNames: 'Kakembo charles',
       phoneNumber: '1234567890',
       location: 'Kampala, Uganda',
