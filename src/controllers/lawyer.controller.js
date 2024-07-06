@@ -39,7 +39,7 @@ const searchLawyersByName = catchAsync(async (req, res) => {
  * Fetch popular lawyers
  */
 const fetchPopularLawyers = catchAsync(async (req, res) => {
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 20 } = req.query;
   const filter = {
     isProfilePublic: true,
     $or: [
