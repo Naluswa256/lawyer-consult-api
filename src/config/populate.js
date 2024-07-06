@@ -71,7 +71,7 @@ const specializations = [
   const sampleLawyers = [
   
     {
-      email: 'lawyer25@example.com',
+      email: 'lawyer26@example.com',
       fullNames: 'Kakembo charles',
       phoneNumber: '1234567890',
       location: 'Kampala, Uganda',
@@ -136,6 +136,7 @@ const specializations = [
       endTime: new Date('2024-07-10T10:00:00Z'),
       topic: 'Legal Consultation',
       status: 'confirmed',
+      transactionReference:'',
       notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       package: {
         duration: 60, // Duration in minutes
@@ -153,6 +154,7 @@ const specializations = [
       topic: 'Contract Review',
       notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'pending',
+      transactionReference:'',
       package: {
         duration: 60, // Duration in minutes
         price: 150, // Price in your currency
@@ -169,6 +171,7 @@ const specializations = [
       topic: 'Litigation Strategy',
       notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'confirmed',
+      transactionReference:'',
       package: {
         duration: 120, // Duration in minutes
         price: 200, // Price in your currency
@@ -185,6 +188,7 @@ const specializations = [
       topic: 'Legal Advice on Property',
       notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'cancelled',
+      transactionReference:'',
       package: {
         duration: 60, // Duration in minutes
         price: 120, // Price in your currency
@@ -201,6 +205,7 @@ const specializations = [
       topic: 'Consultation on Intellectual Property',
       notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'rejected',
+      transactionReference:'',
       package: {
         duration: 60, // Duration in minutes
         price: 100, // Price in your currency
@@ -217,6 +222,7 @@ const specializations = [
       topic: 'Contract Negotiation',
       notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
       status: 'completed',
+      transactionReference:'',
       package: {
         duration: 120, // Duration in minutes
         price: 250, // Price in your currency

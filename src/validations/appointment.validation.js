@@ -12,7 +12,6 @@ const maxWords = (value, max, helpers) => {
 const appointmentSchema = {
   body: Joi.object({
     lawyerId: Joi.string().required().custom(objectId),
-    packageId: Joi.string().required().custom(objectId),
     appointmentType: Joi.string().required().valid('videoCall', 'voiceCall', 'physicalMeeting'),
     date: Joi.date().iso().required(),
     startTime: Joi.date().iso().required(),
