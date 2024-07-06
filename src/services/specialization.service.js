@@ -27,9 +27,14 @@ const getSpecializations = async (filter,options) => {
  * @param {string} name - The name or partial name to search for
  * @returns {Promise<Array>} - List of matching specializations
  */
-const searchSpecializationsByName = async (name) => {
+const searchSpecializationsByName = async (name, limit , page) => {
+  const options ={
+    limit, 
+    page
+  }
   const regex = new RegExp(name, 'i');
-  return Specialization.find({ name: { $regex: regex } });
+  const filter = { name: { $regex: regex } };
+  return Specialization.paginate(filter, options);
 };
 
 module.exports = {

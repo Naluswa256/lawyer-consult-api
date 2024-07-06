@@ -14,8 +14,7 @@ const getSpecializations = catchAsync(async (req, res) => {
   res.send(specializations);
 });
 const searchSpecializations = catchAsync(async (req, res) => {
-  const { name } = req.query;
-
+  const { name, limit = 10, page = 1 } = req.query;
   const specializations = await specializationService.searchSpecializationsByName(name);
   res.status(httpStatus.OK).send(specializations);
 });
