@@ -78,6 +78,7 @@ const getAppointmentsByUser = async (userId, options) => {
     const appointment = await Appointment.findById(appointmentId)
       .populate('userId', 'avatar fullNames')  
       .populate('lawyerId', 'avatar fullNames')
+      .select({iv:0, tag:0});
     populatedAppointments.push(appointment);
   }
 
@@ -105,6 +106,7 @@ const getTodaysAppointmentsByUser = async (userId, options) => {
     const appointment = await Appointment.findById(appointmentId)
       .populate('userId', 'avatar fullNames')  
       .populate('lawyerId', 'avatar fullNames')
+      .select({iv:0, tag:0});
     populatedAppointments.push(appointment);
   }
 

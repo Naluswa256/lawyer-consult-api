@@ -71,7 +71,7 @@ const specializations = [
   const sampleLawyers = [
   
     {
-      email: 'lawyer26@example.com',
+      email: 'lawyer27@example.com',
       fullNames: 'Kakembo charles',
       phoneNumber: '1234567890',
       location: 'Kampala, Uganda',
@@ -143,6 +143,8 @@ const specializations = [
         price: 100, // Price in your currency
       },
       isAnonymous: false,
+      iv:'',
+      tag:''
     },
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
@@ -160,6 +162,8 @@ const specializations = [
         price: 150, // Price in your currency
       },
       isAnonymous: false,
+      iv:'',
+      tag:''
     },
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
@@ -177,6 +181,8 @@ const specializations = [
         price: 200, // Price in your currency
       },
       isAnonymous: false,
+      iv:'',
+      tag:''
     },
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
@@ -194,6 +200,8 @@ const specializations = [
         price: 120, // Price in your currency
       },
       isAnonymous: false,
+      iv:'',
+      tag:''
     },
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
@@ -211,6 +219,8 @@ const specializations = [
         price: 100, // Price in your currency
       },
       isAnonymous: false,
+      iv:'',
+      tag:''
     },
     {
       userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
@@ -228,6 +238,8 @@ const specializations = [
         price: 250, // Price in your currency
       },
       isAnonymous: false,
+      iv:'',
+      tag:''
     },
   ];
   
