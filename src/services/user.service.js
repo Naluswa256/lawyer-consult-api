@@ -48,7 +48,7 @@ const getUserById = async (id) => {
 const getUserByEmail = async (email) => {
   return User.findOne({ email }).populate({
     path: 'reviewsReceived',
-    select: '-_id rating comment',
+    select: {rating:1, comment:1},
     populate: [
       {
        path:'user',
@@ -62,7 +62,7 @@ const getUserByEmail = async (email) => {
     ]
   }).populate({
     path: 'reviewsGiven',
-    select: '-_id rating comment',
+    select: {rating:1 , comment:1},
     populate: [
       {
         path:'user',
@@ -90,10 +90,10 @@ const getUserByEmail = async (email) => {
         select: '-_id duration price',
       },
     ],
-    select: '-iv -tag',
+    select: {iv:0, tag:0},
   }).populate({
     path: 'specializations',
-    select: 'name -_id -description',
+    select: {name:1},
   });
 };
 
