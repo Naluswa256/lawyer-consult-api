@@ -53,7 +53,7 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
 
         io.on('connection', (socket) => {
           logger.info('New client connected');
-          socketLogic(socket);
+          socketLogic.initializeSocket(socket);
         });
       }).catch((error) => {
         logger.error('Error seeding appointments:', error);

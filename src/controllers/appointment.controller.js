@@ -2,7 +2,7 @@ const httpStatus = require('http-status');
 const catchAsync = require('../utils/catchAsync');
 const { appointmentService } = require('../services');
 const config = require('../config/config');
-
+const socketLogic = require('../utils/socket');
 const bookAppointment = catchAsync(async (req, res) => {
   const { lawyerId, date, startTime, endTime, topic, notes, appointmentType } = req.validatedBody;
   const { _id: userId } = req.user;
@@ -29,6 +29,7 @@ const updateAppointmentStatus = catchAsync(async (req, res) => {
 
   if (status === 'confirmed') {
     await appointmentService.notifyUser(appointment.userId, 'Your appointment has been accepted');
+    socketLogic.emitEvent(req.io, 'new appointment', { appointmentId: appointment._id, userId: appointment.userId });
   } else if (status === 'rejected') {
     await appointmentService.notifyUser(appointment.userId, 'Your appointment has been rejected');
   }
