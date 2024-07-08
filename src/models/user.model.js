@@ -95,10 +95,20 @@ const userSchema = new mongoose.Schema(
     ],
     availableSlots: [
       {
-        day: String,
+        day: {
+          type: String,
+          required: true,
+        },
         timeSlots: [
           {
-            type: String,
+            startTime: {
+              type: String,
+              required: true,
+            },
+            endTime: {
+              type: String,
+              required: true,
+            },
           },
         ],
       },

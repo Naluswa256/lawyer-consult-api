@@ -14,7 +14,7 @@ const populateUserFields = (query) => {
   return query
     .populate({
       path: 'reviewsReceived',
-      select: { rating: 1, comment: 1 },
+      select: { rating: 1, comment: 1, createdAt: 1, updatedAt: 1 },
       populate: [
         {
           path: 'user',
@@ -28,7 +28,7 @@ const populateUserFields = (query) => {
     })
     .populate({
       path: 'reviewsGiven',
-      select: { rating: 1, comment: 1 },
+      select: { rating: 1, comment: 1, createdAt: 1, updatedAt: 1 },
       populate: [
         {
           path: 'user',
@@ -126,6 +126,7 @@ const fetchPopularLawyers = async (filter, options) => {
  */
 const getLawyerAvailability = async (lawyerId) => {
   const today = new Date();
+  const lawyer = await User.findById(lawyerId).select('availableSlots');
   const appointments = await Appointment.find({
     lawyerId,
     status: 'confirmed',
@@ -133,12 +134,16 @@ const getLawyerAvailability = async (lawyerId) => {
   });
 
   const availability = {
-    takenSlots: [],
+    availableDays: lawyer.availableSlots.map(slot => slot.day),
+    takenSlots: {},
   };
 
   appointments.forEach((appointment) => {
-    availability.takenSlots.push({
-      date: appointment.date.toLocaleDateString(),
+    const day = appointment.date.toLocaleDateString();
+    if (!availability.takenSlots[day]) {
+      availability.takenSlots[day] = [];
+    }
+    availability.takenSlots[day].push({
       startTime: appointment.startTime.toLocaleTimeString(),
       endTime: appointment.endTime.toLocaleTimeString(),
     });
@@ -146,6 +151,7 @@ const getLawyerAvailability = async (lawyerId) => {
 
   return availability;
 };
+
 
 module.exports = {
   fetchLawyersBySpecialization,

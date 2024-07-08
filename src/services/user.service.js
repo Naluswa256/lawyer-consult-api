@@ -48,7 +48,7 @@ const getUserById = async (id) => {
 const getUserByEmail = async (email) => {
   return User.findOne({ email }).populate({
     path: 'reviewsReceived',
-    select: {rating:1, comment:1},
+    select: { rating: 1, comment: 1, createdAt: 1, updatedAt: 1 },
     populate: [
       {
        path:'user',
@@ -62,7 +62,7 @@ const getUserByEmail = async (email) => {
     ]
   }).populate({
     path: 'reviewsGiven',
-    select: {rating:1 , comment:1},
+    select: { rating: 1, comment: 1, createdAt: 1, updatedAt: 1 },
     populate: [
       {
         path:'user',

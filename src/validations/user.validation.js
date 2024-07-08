@@ -47,7 +47,14 @@ const updateUser = Joi.object({
     .items(
       Joi.object({
         day: Joi.string().required(),
-        timeSlots: Joi.array().items(Joi.string()).required(),
+        timeSlots: Joi.array()
+          .items(
+            Joi.object({
+              startTime: Joi.string().required(),
+              endTime: Joi.string().required(),
+            })
+          )
+          .required(),
       })
     )
     .optional(),
