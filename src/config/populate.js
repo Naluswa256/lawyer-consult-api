@@ -69,18 +69,16 @@ const specializations = [
   
 
   const sampleLawyers = [
-  
     {
       email: 'lawyer29@example.com',
-      fullNames: 'Kakembo charles',
+      fullNames: 'Kakembo Charles',
       phoneNumber: '1234567890',
       location: 'Kampala, Uganda',
-      avatar: '',
+      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
       password: 'password@123',
       role: 'lawyer',
-      about: 'With over a decade of experience in corporate law, I specialize in guiding businesses through complex legal landscapes. My expertise spans mergers, acquisitions, and contractual negotiations, ensuring compliance and strategic growth. Committed to delivering practical solutions that protect your business interests',
+      about: 'With over a decade of experience in corporate law, I specialize in guiding businesses through complex legal landscapes. My expertise spans mergers, acquisitions, and contractual negotiations, ensuring compliance and strategic growth. Committed to delivering practical solutions that protect your business interests.',
       appointments: [],
-      bookings: [],
       reviewsReceived: [],
       reviewsGiven: [],
       isEmailVerified: true,
@@ -89,10 +87,11 @@ const specializations = [
       isVerified: true,
       availableForWork: true,
       yearsOfExperience: 10,
-      specializations: [], 
+      specializations: [],
+      completedConsultations: 0,
       availableSlots: [
-        { day: 'Monday', timeSlots: ['9:00 AM', '2:00 PM'] },
-        { day: 'Tuesday', timeSlots: ['10:00 AM', '3:00 PM'] },
+        { day: 'Monday', timeSlots: [{ startTime: '9:00 AM', endTime: '10:00 AM' }] },
+        { day: 'Tuesday', timeSlots: [{ startTime: '10:00 AM', endTime: '11:00 AM' }] },
       ],
       employmentHistory: [
         {
@@ -116,137 +115,213 @@ const specializations = [
           currentlyAttending: false,
         },
       ],
-      socialMediaLinkedAccounts: [
-        { platform: 'LinkedIn', url: 'https://linkedin.com/lawyer2' },
-      ],
+      socialMediaLinkedAccounts: [{ platform: 'LinkedIn', url: 'https://linkedin.com/lawyer1' }],
       averageRating: 0,
       numOfReviews: 0,
     },
- 
-    // Add more sample lawyers as needed
-  ];
-
-  const sampleAppointments = [
     {
-      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
-      appointmentType: 'videoCall',
-      lawyerId: '668548c3ae0af9006e958174', // Replace with actual lawyer ID
-      date: new Date('2024-07-10'),
-      startTime: new Date('2024-07-10T09:00:00Z'),
-      endTime: new Date('2024-07-10T10:00:00Z'),
-      topic: 'Legal Consultation',
-      status: 'confirmed',
-      transactionReference:'',
-      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
-      package: {
-        duration: 60, // Duration in minutes
-        price: 100, // Price in your currency
-      },
-      isAnonymous: false,
-      iv:'',
-      tag:''
+      email: 'lawyer30@example.com',
+      fullNames: 'Sarah Johnson',
+      phoneNumber: '0987654321',
+      location: 'Nairobi, Kenya',
+      avatar: 'https://randomuser.me/api/portraits/women/1.jpg',
+      password: 'password@123',
+      role: 'lawyer',
+      about: 'Experienced in family law, I provide compassionate and effective representation for clients facing divorce, child custody disputes, and other family-related matters. My goal is to achieve the best possible outcomes while minimizing stress for my clients.',
+      appointments: [],
+      reviewsReceived: [],
+      reviewsGiven: [],
+      isEmailVerified: true,
+      isPhoneNumberVerified: true,
+      isProfilePublic: true,
+      isVerified: true,
+      availableForWork: true,
+      yearsOfExperience: 8,
+      specializations: [],
+      completedConsultations: 0,
+      availableSlots: [
+        { day: 'Wednesday', timeSlots: [{ startTime: '11:00 AM', endTime: '1:00 PM' }] },
+        { day: 'Thursday', timeSlots: [{ startTime: '2:00 PM', endTime: '3:00 PM' }] },
+      ],
+      employmentHistory: [
+        {
+          companyName: 'Family Law Associates',
+          jobTitle: 'Partner',
+          description: 'Specialized in family law and mediation.',
+          startMonth: 'February',
+          startYear: 2012,
+          endMonth: 'June',
+          endYear: 2021,
+          isCurrent: false,
+        },
+      ],
+      education: [
+        {
+          institutionName: 'University of Nairobi',
+          degree: 'LL.B',
+          fieldOfStudy: 'Law',
+          startYear: 2005,
+          endYear: 2009,
+          currentlyAttending: false,
+        },
+      ],
+      socialMediaLinkedAccounts: [{ platform: 'LinkedIn', url: 'https://linkedin.com/lawyer2' }],
+      averageRating: 0,
+      numOfReviews: 0,
     },
     {
-      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
-      appointmentType: 'voiceCall',
-      lawyerId: '668548c3ae0af9006e958174', // Replace with actual lawyer ID
-      date: new Date('2024-07-12'),
-      startTime: new Date('2024-07-12T14:00:00Z'),
-      endTime: new Date('2024-07-12T15:00:00Z'),
-      topic: 'Contract Review',
-      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
-      status: 'pending',
-      transactionReference:'',
-      package: {
-        duration: 60, // Duration in minutes
-        price: 150, // Price in your currency
-      },
-      isAnonymous: false,
-      iv:'',
-      tag:''
+      email: 'lawyer31@example.com',
+      fullNames: 'David Kimani',
+      phoneNumber: '1122334455',
+      location: 'Dar es Salaam, Tanzania',
+      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
+      password: 'password@123',
+      role: 'lawyer',
+      about: 'A specialist in criminal defense, I have successfully defended clients in a wide range of cases from minor offenses to serious felonies. My approach is thorough, strategic, and committed to upholding the rights of my clients.',
+      appointments: [],
+      reviewsReceived: [],
+      reviewsGiven: [],
+      isEmailVerified: true,
+      isPhoneNumberVerified: true,
+      isProfilePublic: true,
+      isVerified: true,
+      availableForWork: true,
+      yearsOfExperience: 12,
+      specializations: [],
+      completedConsultations: 0,
+      availableSlots: [
+        { day: 'Friday', timeSlots: [{ startTime: '1:00 PM', endTime: '4:00 PM' }] },
+        { day: 'Saturday', timeSlots: [{ startTime: '9:00 AM', endTime: '11:00 AM' }] },
+      ],
+      employmentHistory: [
+        {
+          companyName: 'Criminal Defense Experts',
+          jobTitle: 'Lead Attorney',
+          description: 'Led defense teams in high-profile cases.',
+          startMonth: 'March',
+          startYear: 2008,
+          endMonth: 'Present',
+          isCurrent: true,
+        },
+      ],
+      education: [
+        {
+          institutionName: 'Dar es Salaam University',
+          degree: 'LL.M',
+          fieldOfStudy: 'Criminal Law',
+          startYear: 2004,
+          endYear: 2007,
+          currentlyAttending: false,
+        },
+      ],
+      socialMediaLinkedAccounts: [{ platform: 'LinkedIn', url: 'https://linkedin.com/lawyer3' }],
+      averageRating: 0,
+      numOfReviews: 0,
     },
     {
-      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
-      appointmentType: 'physicalMeeting',
-      lawyerId: '668548c3ae0af9006e958174', // Replace with actual lawyer ID
-      date: new Date('2024-07-15'),
-      startTime: new Date('2024-07-15T10:00:00Z'),
-      endTime: new Date('2024-07-15T12:00:00Z'),
-      topic: 'Litigation Strategy',
-      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
-      status: 'confirmed',
-      transactionReference:'',
-      package: {
-        duration: 120, // Duration in minutes
-        price: 200, // Price in your currency
-      },
-      isAnonymous: false,
-      iv:'',
-      tag:''
+      email: 'lawyer32@example.com',
+      fullNames: 'Amina Mohammed',
+      phoneNumber: '6677889900',
+      location: 'Lagos, Nigeria',
+      avatar: 'https://randomuser.me/api/portraits/women/2.jpg',
+      password: 'password@123',
+      role: 'lawyer',
+      about: 'Passionate about human rights law, I advocate for the marginalized and voiceless. My work involves both litigation and policy advocacy, striving to create a fairer society for all.',
+      appointments: [],
+      reviewsReceived: [],
+      reviewsGiven: [],
+      isEmailVerified: true,
+      isPhoneNumberVerified: true,
+      isProfilePublic: true,
+      isVerified: true,
+      availableForWork: true,
+      yearsOfExperience: 15,
+      specializations: [],
+      completedConsultations: 0,
+      availableSlots: [
+        { day: 'Monday', timeSlots: [{ startTime: '10:00 AM', endTime: '12:00 PM' }] },
+        { day: 'Thursday', timeSlots: [{ startTime: '3:00 PM', endTime: '5:00 PM' }] },
+      ],
+      employmentHistory: [
+        {
+          companyName: 'Human Rights Advocacy Group',
+          jobTitle: 'Director',
+          description: 'Led numerous campaigns and cases for human rights.',
+          startMonth: 'April',
+          startYear: 2005,
+          endMonth: 'Present',
+          isCurrent: true,
+        },
+      ],
+      education: [
+        {
+          institutionName: 'University of Lagos',
+          degree: 'LL.M',
+          fieldOfStudy: 'Human Rights Law',
+          startYear: 2000,
+          endYear: 2003,
+          currentlyAttending: false,
+        },
+      ],
+      socialMediaLinkedAccounts: [{ platform: 'LinkedIn', url: 'https://linkedin.com/lawyer4' }],
+      averageRating: 0,
+      numOfReviews: 0,
     },
     {
-      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
-      appointmentType: 'videoCall',
-      lawyerId: '668548c3ae0af9006e958174', // Replace with actual lawyer ID
-      date: new Date('2024-07-18'),
-      startTime: new Date('2024-07-18T16:00:00Z'),
-      endTime: new Date('2024-07-18T17:00:00Z'),
-      topic: 'Legal Advice on Property',
-      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
-      status: 'cancelled',
-      transactionReference:'',
-      package: {
-        duration: 60, // Duration in minutes
-        price: 120, // Price in your currency
-      },
-      isAnonymous: false,
-      iv:'',
-      tag:''
-    },
-    {
-      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
-      appointmentType: 'voiceCall',
-      lawyerId: '668548c3ae0af9006e958174', // Replace with actual lawyer ID
-      date: new Date('2024-07-20'),
-      startTime: new Date('2024-07-20T11:00:00Z'),
-      endTime: new Date('2024-07-20T12:00:00Z'),
-      topic: 'Consultation on Intellectual Property',
-      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
-      status: 'rejected',
-      transactionReference:'',
-      package: {
-        duration: 60, // Duration in minutes
-        price: 100, // Price in your currency
-      },
-      isAnonymous: false,
-      iv:'',
-      tag:''
-    },
-    {
-      userId: '6676eb3cf63f8f006b4a7341', // Replace with actual user ID
-      appointmentType: 'physicalMeeting',
-      lawyerId: '668548c3ae0af9006e958174', // Replace with actual lawyer ID
-      date: new Date('2024-07-22'),
-      startTime: new Date('2024-07-22T15:00:00Z'),
-      endTime: new Date('2024-07-22T17:00:00Z'),
-      topic: 'Contract Negotiation',
-      notes:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget ipsum nec purus imperdiet vestibulum. Fusce congue, risus eget tincidunt bibendum, nunc risus dignissim risus, non consequat eros lorem vel orci. Duis id velit eu ante fermentum lobortis. Integer vel aliquet neque, nec maximus enim. Vivamus fermentum, nisi ut varius condimentum, lorem nunc ultricies libero, nec tincidunt arcu neque sed dui. Mauris sed diam magna. Aliquam erat volutpat. Nullam rutrum tincidunt urna, non venenatis orci tristique id. Phasellus nec ante sed lacus congue venenatis. Nam vel tortor leo.',
-      status: 'completed',
-      transactionReference:'',
-      package: {
-        duration: 120, // Duration in minutes
-        price: 250, // Price in your currency
-      },
-      isAnonymous: false,
-      iv:'',
-      tag:''
+      email: 'lawyer33@example.com',
+      fullNames: 'John Doe',
+      phoneNumber: '2233445566',
+      location: 'Accra, Ghana',
+      avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+      password: 'password@123',
+      role: 'lawyer',
+      about: 'As a real estate lawyer, I provide comprehensive legal services for property transactions, ensuring compliance with all legal requirements and protecting clients\' interests. My experience includes residential and commercial property deals.',
+      appointments: [],
+      reviewsReceived: [],
+      reviewsGiven: [],
+      isEmailVerified: true,
+      isPhoneNumberVerified: true,
+      isProfilePublic: true,
+      isVerified: true,
+      availableForWork: true,
+      yearsOfExperience: 7,
+      specializations: [],
+      completedConsultations: 0,
+      availableSlots: [
+        { day: 'Wednesday', timeSlots: [{ startTime: '9:00 AM', endTime: '10:00 AM' }] },
+        { day: 'Friday', timeSlots: [{ startTime: '2:00 PM', endTime: '4:00 PM' }] },
+      ],
+      employmentHistory: [
+        {
+          companyName: 'Real Estate Legal Solutions',
+          jobTitle: 'Attorney',
+          description: 'Managed legal aspects of property transactions.',
+          startMonth: 'June',
+          startYear: 2014,
+          endMonth: 'Present',
+          isCurrent: true,
+        },
+      ],
+      education: [
+        {
+          institutionName: 'University of Ghana',
+          degree: 'LL.B',
+          fieldOfStudy: 'Law',
+          startYear: 2008,
+          endYear: 2012,
+          currentlyAttending: false,
+        },
+      ],
+      socialMediaLinkedAccounts: [{ platform: 'LinkedIn', url: 'https://linkedin.com/lawyer5' }],
+      averageRating: 0,
+      numOfReviews: 0,
     },
   ];
   
 
 
+
   module.exports = {
     specializations, 
     sampleLawyers,
-    sampleAppointments
   }

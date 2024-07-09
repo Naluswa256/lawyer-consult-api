@@ -3,25 +3,14 @@ const { app, io } = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
 const socketLogic = require('./utils/socket');
-const { Specialization, Appointment } = require('./models'); // Removed User model
-const { specializations, sampleAppointments } = require('./config/populate'); // Removed sampleLawyers
-
+const { Specialization, Appointment, User } = require('./models'); 
+const { specializations, sampleLawyers } = require('./config/populate'); 
 let server;
-
-async function fetchSpecializationIds() {
-  try {
-    const specializations = await Specialization.find({}, '_id'); 
-    return specializations.map(spec => spec._id);
-  } catch (error) {
-    logger.error('Error fetching specializations:', error);
-    throw error;
-  }
-}
 
 async function seedSpecializations() {
   try {
-    await Specialization.deleteMany({}); // Clear existing specializations if needed
-    await Specialization.insertMany(specializations); // Insert sample specializations
+    await Specialization.deleteMany({}); 
+    await Specialization.insertMany(specializations); 
     logger.info('Sample specializations seeded successfully.');
   } catch (error) {
     logger.error('Error seeding sample specializations:', error);
@@ -29,24 +18,32 @@ async function seedSpecializations() {
   }
 }
 
-async function seedAppointments() {
+async function seedLawyers() {
   try {
-    await Appointment.deleteMany({}); // Clear existing appointments if needed
-    await Appointment.insertMany(sampleAppointments); // Insert sample appointments
-    logger.info('Sample appointments seeded successfully.');
+    await Lawyer.deleteMany({}); 
+    await Lawyer.insertMany(sampleLawyers); 
+    logger.info('Sample lawyers seeded successfully.');
   } catch (error) {
-    logger.error('Error seeding sample appointments:', error);
+    logger.error('Error seeding sample lawyers:', error);
+    throw error;
+  }
+}
+
+async function clearAppointments() {
+  try {
+    await Appointment.deleteMany({}); 
+    logger.info('Appointments cleared successfully.');
+  } catch (error) {
+    logger.error('Error clearing appointments:', error);
     throw error;
   }
 }
 
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info('Connected to MongoDB');
-
-  // Call the seeding functions after successful connection
   seedSpecializations().then(() => {
-    fetchSpecializationIds().then(() => {
-      seedAppointments().then(() => {
+    seedLawyers().then(() => {
+      clearAppointments().then(() => {
         server = app.listen(config.port, () => {
           logger.info(`Listening to port ${config.port}`);
         });
@@ -56,16 +53,16 @@ mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
           socketLogic.initializeSocket(socket);
         });
       }).catch((error) => {
-        logger.error('Error seeding appointments:', error);
-        process.exit(1); // Exit process if seeding appointments fails
+        logger.error('Error clearing appointments:', error);
+        process.exit(1); 
       });
     }).catch((error) => {
-      logger.error('Error fetching specializations:', error);
-      process.exit(1); // Exit process if fetching specializations fails
+      logger.error('Error seeding lawyers:', error);
+      process.exit(1);
     });
   }).catch((error) => {
     logger.error('Error seeding specializations:', error);
-    process.exit(1); // Exit process if seeding specializations fails
+    process.exit(1);
   });
 });
 
