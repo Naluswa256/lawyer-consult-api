@@ -20,8 +20,8 @@ async function seedSpecializations() {
 
 async function seedLawyers() {
   try {
-    await Lawyer.deleteMany({}); 
-    await Lawyer.insertMany(sampleLawyers); 
+    await User.deleteMany({}); 
+    await User.insertMany(sampleLawyers); 
     logger.info('Sample lawyers seeded successfully.');
   } catch (error) {
     logger.error('Error seeding sample lawyers:', error);
