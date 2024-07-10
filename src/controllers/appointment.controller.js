@@ -29,10 +29,10 @@ const updateAppointmentStatus = catchAsync(async (req, res) => {
   const appointment = await appointmentService.updateAppointmentStatus(appointmentId, status);
 
   if (status === 'confirmed') {
-    await appointmentService.notifyUser(appointment.userId, 'Your appointment has been accepted');
+    //await appointmentService.notifyUser(appointment.userId, 'Your appointment has been accepted');
     socketLogic.emitEvent(req.io, 'new appointment', { appointmentId: appointment._id, userId: appointment.userId });
   } else if (status === 'rejected') {
-    await appointmentService.notifyUser(appointment.userId, 'Your appointment has been rejected');
+   // await appointmentService.notifyUser(appointment.userId, 'Your appointment has been rejected');
   }
 
   res.status(httpStatus.OK).json(appointment);
