@@ -10,14 +10,6 @@ const maxWords = (value, max, helpers) => {
   return value;
 };
 
-const register = {
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().custom(password),
-    role: Joi.string().optional().valid('customer', 'admin', 'lawyer'),
-    fullNames: Joi.string().required(),
-  }),
-};
 
 const appointmentSchema = {
   body: Joi.object().keys({
