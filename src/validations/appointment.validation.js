@@ -20,6 +20,7 @@ const appointmentSchema = {
     notes: Joi.string()
       .optional()
       .custom((value, helpers) => maxWords(value, 100, helpers), 'custom word limit validation'),
+    isAnonymous: Joi.boolean().required(), 
   }).messages({
     'string.maxWords': '"notes" must not exceed {#max} words',
   }),
