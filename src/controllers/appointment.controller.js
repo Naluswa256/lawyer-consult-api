@@ -4,7 +4,7 @@ const { appointmentService } = require('../services');
 const config = require('../config/config');
 const socketLogic = require('../utils/socket');
 const bookAppointment = catchAsync(async (req, res) => {
-  const { lawyerId, date, startTime, endTime, topic, notes, appointmentType, isAnonymous} = req.validatedBody;
+  const { lawyerId, date, startTime, endTime, topic, notes, appointmentType, isAnonymous} = req.body;
   const { _id: userId } = req.user;
  // const attachedDocumentsUrls = req.files.map((file) => `${config.server_host}:${config.port}/uploads/${file.filename}`);
   const appointmentData = {
