@@ -9,8 +9,18 @@ const maxWords = (value, max, helpers) => {
   }
   return value;
 };
+
+const register = {
+  body: Joi.object().keys({
+    email: Joi.string().required().email(),
+    password: Joi.string().required().custom(password),
+    role: Joi.string().optional().valid('customer', 'admin', 'lawyer'),
+    fullNames: Joi.string().required(),
+  }),
+};
+
 const appointmentSchema = {
-  body: Joi.object({
+  body: Joi.object().keys({
     lawyerId: Joi.string().required().custom(objectId),
     appointmentType: Joi.string().required().valid('videoCall', 'voiceCall', 'physicalMeeting'),
     date: Joi.date().iso().required(),
@@ -20,25 +30,26 @@ const appointmentSchema = {
     notes: Joi.string()
       .optional()
       .custom((value, helpers) => maxWords(value, 100, helpers), 'custom word limit validation'),
-    isAnonymous: Joi.boolean().required(), 
+    isAnonymous: Joi.boolean().required(),
   }).messages({
     'string.maxWords': '"notes" must not exceed {#max} words',
   }),
 };
 
 const updateAppointmentStatus = {
-  body: Joi.object({
+  body: Joi.object().keys({
     status: Joi.string().required().valid('confirmed', 'rejected'),
   }),
 };
 
 const deleteIssue = {
-  params: Joi.object({
+  params: Joi.object().keys({
     issueId: Joi.string().required().custom(objectId),
   }),
 };
 
 module.exports = {
+  register,
   appointmentSchema,
   updateAppointmentStatus,
   deleteIssue,
