@@ -41,7 +41,6 @@ const deleteIssue = {
 };
 
 module.exports = {
-  register,
   appointmentSchema,
   updateAppointmentStatus,
   deleteIssue,
