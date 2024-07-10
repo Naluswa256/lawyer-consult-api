@@ -19,7 +19,7 @@ const bookAppointment = catchAsync(async (req, res) => {
     isAnonymous
   };
   const appointment = await appointmentService.createAppointment(appointmentData);
-  await appointmentService.notifyLawyer(appointment.lawyerId, 'New appointment request');
+  //await appointmentService.notifyLawyer(appointment.lawyerId, 'New appointment request');
   res.status(httpStatus.CREATED).json(appointment);
 });
 
